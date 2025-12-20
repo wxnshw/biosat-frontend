@@ -1,0 +1,14 @@
+a{
+    margin-top: 10px;
+    color: #111111;
+}
+
+a:hover{
+    color: #555555;
+}
+
+li:hover a{
+    border-radius: 0;
+    background-color: #D9D9D9;
+    transition: none;
+}

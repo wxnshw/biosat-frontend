@@ -1,0 +1,12 @@
+#sideBar{
+    height: 100vh;
+    padding-top: 80px;
+    position: fixed;
+    background-color: #FFFFFF;
+}
+
+#dashboard{
+    margin-top: 60px;
+}
+
+/* .navbar{} */
