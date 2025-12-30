@@ -23,10 +23,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-a {
-    color: #111111;
-}
-
 .shadow {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 5px 6px rgba(0, 0, 0, 0.3);
 }
