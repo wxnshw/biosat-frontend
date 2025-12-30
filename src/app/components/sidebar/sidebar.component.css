@@ -28,6 +28,7 @@ a:hover::before {
     bottom: 0;
 }
 
+
 .tittle-text {
     display: flex;
     flex-direction: column;
