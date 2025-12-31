@@ -29,7 +29,7 @@ a:hover::before {
 }
 
 
-.tittle-text {
+.title-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +38,7 @@ a:hover::before {
     color: var(--terciary-color);
 }
 
-.tittle {
+.title {
     font-family: "Fugaz One", sans-serif;
     font-size: 48px;
 }

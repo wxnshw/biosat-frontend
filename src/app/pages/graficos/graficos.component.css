@@ -1,0 +1,27 @@
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Linha de gráficos */
+.charts-row {
+  display: flex;
+  gap: 20px;
+}
+
+/* Cards */
+.chart-card {
+  background: #141a22;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1;
+  min-height: 350px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Linha de baixo ocupa tudo */
+.full-width .chart-card {
+  width: 100%;
+}

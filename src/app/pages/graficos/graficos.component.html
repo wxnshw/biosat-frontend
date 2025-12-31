@@ -1,1 +1,42 @@
-<p>graficos works!</p>
+<div class="section-container">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card shadow card-theme h-100">
+                    <div class="card-header card-header-theme">
+                        <h5 class="title">Atendimentos mensais</h5>
+                    </div>
+                    <div class="card-body">
+                        <app-scale-chart></app-scale-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card shadow card-theme h-100">
+                    <div class="card-header card-header-theme">
+                        <h5 class="title">Atendimentos por tipo</h5>
+                    </div>
+                    <div class="card-body">
+                        <app-pie-chart></app-pie-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow card-theme">
+                    <div class="card-header card-header-theme">
+                        <h5 class="title">Evolução de atendimentos</h5>
+                    </div>
+                    <div class="card-body">
+                        <app-line-chart></app-line-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
