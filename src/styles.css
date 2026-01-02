@@ -5,6 +5,43 @@
     --secondary-color: #6B7280;
     --terciary-color: #005B96;
     --background-color: #D9D9D9;
+
+    .fc-button,
+    .fc-button:focus,
+    .fc-button:active {
+        color: var(--terciary-color);
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-toolbar-title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--terciary-color);
+    }
+
+    .fc-col-header-cell-cushion {
+        font-size: 1rem;
+        color: var(--secondary-color);
+        text-decoration: none;
+    }
+
+    .fc-daygrid-day-number {
+        font-size: 1rem;
+        color: var(--terciary-color);
+        cursor: pointer;
+    }
+
+    .fc-daygrid-day {
+        border-radius: 6px;
+    }
+
+    .fc-daygrid-event {
+        background-color: var(--terciary-color);
+        border: none;
+        font-size: 0.7rem;
+        padding: 2px 4px;
+    }
 }
 
 
@@ -38,18 +75,19 @@ body {
     border-radius: 2px;
 }
 
-.card-heading-theme{
-    color: var(--background-color);
+.card-heading-theme {
+    color: var(--terciary-color);
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     padding: 12px;
 }
 
-.card-body-theme{
+.card-body-theme {
     background-color: var(--background-color);
 }
 
 .cards {
     display: flex;
     flex-direction: column;
+    position: relative;
 }

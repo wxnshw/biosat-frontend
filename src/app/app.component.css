@@ -1,11 +1,13 @@
-#sideBar{
+#sideBar {
     height: 100vh;
     padding-top: 80px;
-    position: relative;
+    position: fixed;
     background-color: var(--primary-color);
     box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-#dashboard{
-    margin-top: 60px;
+#dashboard {
+    margin-left: 16vw;
+    padding: 24px;
+    min-height: 100vh;
 }

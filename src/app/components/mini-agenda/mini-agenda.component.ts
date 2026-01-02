@@ -16,7 +16,6 @@ export class MiniAgendaComponent {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
     locale: ptBrLocale,
-    height: 300,
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
