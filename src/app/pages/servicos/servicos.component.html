@@ -1,1 +1,41 @@
-<p>servicos works!</p>
+<div class="section-container">
+    <div class="container-fluid">
+        <div class="cards">
+            <div class="card shadow card-theme h-100">
+                <div class="card-header card-heading-theme">
+                    <h2 class="title">
+                        Serviços
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <table class="table table-inverse table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Cliente</th>
+                                <th>Tipo de serviço</th>
+                                <th>Veículo</th>
+                                <th>Placa do veículo</th>
+                                <th>Valor</th>
+                                <th>Data do serviço</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let servico of servicos">
+                                <td>#{{ servico.id }}</td>
+                                <td>{{ servico.cliente }}</td>
+                                <td>{{ servico.tipoServico }}</td>
+                                <td>{{ servico.veiculo }}</td>
+                                <td>{{ servico.placa }}</td>
+                                <td>{{ servico.valor | currency:'BRL' }}</td>
+                                <td>{{ servico.dataServico | date:'dd/MM/yyyy' }}</td>
+                                <td>{{ servico.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

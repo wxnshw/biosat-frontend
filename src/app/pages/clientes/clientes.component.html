@@ -1,1 +1,39 @@
-<p>clientes works!</p>
+<div class="section-container">
+    <div class="container-fluid">
+        <div class="cards">
+            <div class="card shadow card-theme h-100">
+                <div class="card-header card-heading-theme">
+                    <h2 class="title">
+                        Clientes
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <table class="table table-inverse table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Cliente</th>
+                                <th>Total de serviços</th>
+                                <th>Data de cadastro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cliente of clientes">
+                                <td>#{{ cliente.id }}</td>
+                                <td>{{ cliente.nome }}</td>
+                                <td>{{ cliente.totalServicos }}</td>
+                                <td>{{ cliente.dataCadastro | date:'dd/MM/yyyy' }}</td>
+                                <td class="actions-buttons">
+                                    <button class="btn btn-sm btn-primary">Detalhar</button>
+                                    <button class="btn btn-sm btn-info">Editar</button>
+                                    <button class="btn btn-sm btn-danger">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
