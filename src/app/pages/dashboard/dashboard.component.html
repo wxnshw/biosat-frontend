@@ -1,14 +1,80 @@
 <div class="section-container">
-    <div class="cards">
-        <div class="card-deck">
-            <div class="card mb-3 shadow card-theme">
-                <div class="card-header card-header-theme">
-                    <h5 class="title">Agenda</h5>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="card shadow card-theme h-100">
+                            <div class="card-header card-heading-theme">
+                                <h5 class="title">Agenda</h5>
+                            </div>
+                            <div class="card-body">
+                                <app-mini-agenda></app-mini-agenda>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow card-theme h-100">
+                            <div class="card-header card-heading-theme">
+                                <h5 class="title">Clientes em alta</h5>
+                            </div>
+                            <div class="card-body">
+                                <app-pie-chart></app-pie-chart>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <app-mini-agenda></app-mini-agenda>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow card-theme">
+                            <div class="card-header card-heading-theme">
+                                <h5 class="title">Evolução de atendimentos</h5>
+                            </div>
+                            <div class="card-body">
+                                <app-line-chart></app-line-chart>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-3">
+                <aside class="dashboard-aside">
+                    <div class="card shadow card-theme mb-3 aside-card">
+                        <div class="card-header card-heading-theme d-flex justify-content-between align-items-center">
+                            <h6 class="title m-0">Serviços Pendentes</h6>
+                            <span class="badge bg-warning text-dark">
+                                {{pendentes.length}}
+                            </span>
+                        </div>
+                        <div class="card-body aside-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" *ngFor="let servico of pendentes">
+                                    <strong>{{servico.cliente}}</strong><br />
+                                    <small>{{servico.tipo}} - {{servico.data | date:'dd/MM'}}</small>
+                                    <button class="btn btn-sm btn-outline-primary">Detalhar</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card shadow card-theme aside-card">
+                        <div class="card-header card-heading-theme d-flex justify-content-between align-items-center">
+                            <h6 class="title m-0">Serviços Concluídos</h6>
+                            <span class="badge bg-success">
+                                {{concluidos.length}}
+                            </span>
+                        </div>
+                        <div class="card-body aside-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" *ngFor="let servico of concluidos">
+                                    <strong>{{servico.cliente}}</strong><br />
+                                    <small>{{servico.tipo}} - {{servico.data | date:'dd/MM'}}</small>
+                                    <button class="btn btn-sm btn-outline-primary">Detalhar</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
         </div>
-    </div>    
+    </div>
 </div>
