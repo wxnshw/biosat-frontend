@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartData, ChartOptions } from 'chart.js';
 
@@ -10,34 +10,34 @@ import { ChartData, ChartOptions } from 'chart.js';
   styleUrl: './pie-chart.component.css'
 })
 export class PieChartComponent {
-  pieChartType: 'pie' = 'pie';
+  @Input() title = 'Gráfico';
+  @Input() labels: string[] = [];
+  @Input() data: number[] = [];
 
-  pieChartData: ChartData<'pie'> = {
-    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'],
-    datasets: [
-      {
-        label: 'Serviços',
-        data: [10, 25, 18, 30, 22, 15, 40],
-        backgroundColor: [
-          '#0d6efd',
-          '#198754',
-          '#ffc107',
-          '#dc3545',
-          '#6f42c1',
-          '#20c997',
-          '#fd7e14'
-        ]
-      }
-    ]
-  };
+  pieChartType: 'pie' = 'pie';
 
   pieChartOptions: ChartOptions<'pie'> = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: {
+    duration: 0
+  },
     plugins: {
       legend: {
         display: true
-      }
+      },
     }
   };
+
+  get pieChartData(): ChartData<'pie'> {
+    return {
+      labels: this.labels,
+      datasets: [
+        {
+          label: this.title,
+          data: this.data
+        }
+      ]
+    };
+  }
 }

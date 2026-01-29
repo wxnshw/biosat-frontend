@@ -8,5 +8,5 @@ import { MiniAgendaComponent } from '../../components/mini-agenda/mini-agenda.co
   styleUrl: './agenda.component.css'
 })
 export class AgendaComponent {
-
+  
 }

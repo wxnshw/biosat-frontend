@@ -16,9 +16,11 @@
                                 <th>Tipo de serviço</th>
                                 <th>Veículo</th>
                                 <th>Placa do veículo</th>
+                                <th>Kilometragem</th>
                                 <th>Valor</th>
                                 <th>Data do serviço</th>
                                 <th>Status</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,9 +30,15 @@
                                 <td>{{ servico.tipoServico }}</td>
                                 <td>{{ servico.veiculo }}</td>
                                 <td>{{ servico.placa }}</td>
+                                <td>{{ servico.kilometragem }}</td>
                                 <td>{{ servico.valor | currency:'BRL' }}</td>
                                 <td>{{ servico.dataServico | date:'dd/MM/yyyy' }}</td>
                                 <td>{{ servico.status}}</td>
+                                <td class="actions-buttons">
+                                    <button class="btn btn-sm btn-primary">Detalhar</button>
+                                    <button class="btn btn-sm btn-info">Editar</button>
+                                    <button class="btn btn-sm btn-danger">Excluir</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

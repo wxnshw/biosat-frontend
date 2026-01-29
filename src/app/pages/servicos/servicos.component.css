@@ -2,3 +2,13 @@
     color: var(--terciary-color);
     font-size: 1.5rem;
 }
+
+.title {
+    color: var(--terciary-color);
+    font-size: 1.5rem;
+}
+
+.btn, .btn:hover {
+    color: var(--primary-color);
+    margin: 2px;
+}

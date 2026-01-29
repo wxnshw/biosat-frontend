@@ -14,6 +14,7 @@
                                 <th>Id</th>
                                 <th>Cliente</th>
                                 <th>Total de serviços</th>
+                                <th>Contato</th>
                                 <th>Data de cadastro</th>
                                 <th>Ações</th>
                             </tr>
@@ -23,6 +24,7 @@
                                 <td>#{{ cliente.id }}</td>
                                 <td>{{ cliente.nome }}</td>
                                 <td>{{ cliente.totalServicos }}</td>
+                                <td>{{ cliente.contato }}</td>
                                 <td>{{ cliente.dataCadastro | date:'dd/MM/yyyy' }}</td>
                                 <td class="actions-buttons">
                                     <button class="btn btn-sm btn-primary">Detalhar</button>

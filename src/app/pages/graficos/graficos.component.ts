@@ -13,5 +13,6 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrl: './graficos.component.css'
 })
 export class GraficosComponent {
-
+  graficosLabels = ['Instalação simples', 'Instalação com bloqueio ', 'Manutenção', 'Retirada'];
+  graficosData = [12, 20, 8, 15];
 }

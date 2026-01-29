@@ -33,3 +33,18 @@
 .aside-body::-webkit-scrollbar-track {
     background: transparent;
 }
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-item button {
+  margin-left: auto;
+}

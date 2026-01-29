@@ -16,6 +16,7 @@ export class ServicosComponent {
       tipoServico: 'Lavagem Completa',
       veiculo: 'Gol',
       placa: 'ABC-1234',
+      kilometragem: '30 Km',
       valor: 80,
       dataServico: '2024-11-10',
       status: 'Concluído'
@@ -26,6 +27,7 @@ export class ServicosComponent {
       tipoServico: 'Polimento',
       veiculo: 'Onix',
       placa: 'DEF-5678',
+      kilometragem: '30 Km',
       valor: 150,
       dataServico: '2024-12-01',
       status: 'Pendente'

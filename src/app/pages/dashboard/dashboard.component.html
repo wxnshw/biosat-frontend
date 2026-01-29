@@ -6,20 +6,20 @@
                     <div class="col-md-6">
                         <div class="card shadow card-theme h-100">
                             <div class="card-header card-heading-theme">
-                                <h5 class="title">Agenda</h5>
+                                <h5 class="title">Agenda mensal</h5>
                             </div>
                             <div class="card-body">
-                                <app-mini-agenda></app-mini-agenda>
+                                <full-calendar [options]="calendarOptions"></full-calendar>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card shadow card-theme h-100">
                             <div class="card-header card-heading-theme">
-                                <h5 class="title">Clientes em alta</h5>
+                                <h5 class="title">Clientes com mais serviços cadastrados</h5>
                             </div>
                             <div class="card-body">
-                                <app-pie-chart></app-pie-chart>
+                                <app-pie-chart title="Clientes" [labels]="dashboardLabels" [data]="dashboardData">></app-pie-chart> 
                             </div>
                         </div>
                     </div>
@@ -48,15 +48,17 @@
                         </div>
                         <div class="card-body aside-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" *ngFor="let servico of pendentes">
-                                    <strong>{{servico.cliente}}</strong><br />
-                                    <small>{{servico.tipo}} - {{servico.data | date:'dd/MM'}}</small>
+                                <li class="list-group-item service-item" *ngFor="let servico of pendentes">
+                                    <div class="service-info">
+                                        <strong>{{ servico.cliente }} </strong>
+                                        <small>{{ servico.tipo }} - {{ servico.data | date:'dd/MM/yyyy' }}</small>
+                                    </div>
                                     <button class="btn btn-sm btn-outline-primary">Detalhar</button>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="card shadow card-theme aside-card">
+                    <div class="card-body shadow card-theme aside-card">
                         <div class="card-header card-heading-theme d-flex justify-content-between align-items-center">
                             <h6 class="title m-0">Serviços Concluídos</h6>
                             <span class="badge bg-success">
@@ -65,9 +67,11 @@
                         </div>
                         <div class="card-body aside-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" *ngFor="let servico of concluidos">
-                                    <strong>{{servico.cliente}}</strong><br />
-                                    <small>{{servico.tipo}} - {{servico.data | date:'dd/MM'}}</small>
+                                <li class="list-group-item service-item" *ngFor="let servico of concluidos">
+                                    <div class="service-info">
+                                        <strong>{{ servico.cliente }} </strong>
+                                        <small>{{ servico.tipo }} - {{ servico.data | date:'dd/MM/yyyy' }}</small>
+                                    </div>
                                     <button class="btn btn-sm btn-outline-primary">Detalhar</button>
                                 </li>
                             </ul>

@@ -14,12 +14,14 @@ export class ClientesComponent {
       id: 1,
       nome: 'João Silva',
       totalServicos: 5,
+      contato: '61 99999-9999',
       dataCadastro: '2024-11-10'
     },
     {
       id: 2,
       nome: 'Maria Souza',
       totalServicos: 3,
+      contato: '61 99999-9999',
       dataCadastro: '2024-12-01'
     }
   ];
