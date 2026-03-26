@@ -2,40 +2,158 @@
     <div class="container-fluid">
         <div class="cards">
             <div class="card shadow card-theme h-100">
+
                 <div class="card-header card-heading-theme">
                     <h2 class="title">
                         Clientes
+                        <button class="btn btn-md btn-success" (click)="abrirModalCriar()">
+                            Criar novo cliente
+                        </button>
                     </h2>
                 </div>
+
                 <div class="card-body">
-                    <table class="table table-inverse table-hover">
-                        <thead class="thead-dark">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Cliente</th>
-                                <th>Total de serviços</th>
+                                <th>Nome</th>
+                                <th>CNPJ</th>
                                 <th>Contato</th>
-                                <th>Data de cadastro</th>
+                                <th>Data</th>
+                                <th>Total De Serviços</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <tr *ngFor="let cliente of clientes">
-                                <td>#{{ cliente.id }}</td>
+                                <td>{{ cliente.id }}</td>
                                 <td>{{ cliente.nome }}</td>
-                                <td>{{ cliente.totalServicos }}</td>
-                                <td>{{ cliente.contato }}</td>
+                                <td>{{ cliente.cnpjCliente | mask: '00.000.000/0000-00' }}</td>
+                                <td>{{ cliente.contato | mask: '(00) 00000-0000' }}</td>
                                 <td>{{ cliente.dataCadastro | date:'dd/MM/yyyy' }}</td>
-                                <td class="actions-buttons">
-                                    <button class="btn btn-sm btn-primary">Detalhar</button>
-                                    <button class="btn btn-sm btn-info">Editar</button>
-                                    <button class="btn btn-sm btn-danger">Excluir</button>
+                                <td>{{ cliente.totalServicos }}</td>
+
+                                <td>
+                                    <button class="btn btn-sm btn-primary"
+                                        (click)="abrirDetalhar(cliente)">Detalhar</button>
+
+                                    <button class="btn btn-sm btn-info" (click)="abrirEditar(cliente)">Editar</button>
+
+                                    <button class="btn btn-sm btn-danger"
+                                        (click)="abrirExcluir(cliente)">Excluir</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal" *ngIf="modalCriarAberto" style="display:block;">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5>Criar Cliente</h5>
+                <button class="btn-close" (click)="fecharModalCriar()"></button>
+            </div>
+
+            <div class="modal-body">
+                <label for="clienteNome">Nome</label>
+                <input type="text" class="form-control mb-2" placeholder="Digite o nome do cliente"
+                    [(ngModel)]="novoCliente.nome">
+                <label for="clienteCnpj">CNPJ</label>
+                <input type="text" mask="00.000.000/0000-00" class="form-control mb-2"
+                    placeholder="Digite o CNPJ do cliente" [(ngModel)]="novoCliente.cnpjCliente">
+                <label for="clienteContato">Contato</label>
+                <input mask="(00) 00000-0000" type="tel" class="form-control" placeholder="Digite o contato do cliente"
+                    [(ngModel)]="novoCliente.contato">
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" (click)="fecharModalCriar()">Cancelar</button>
+                <button class="btn btn-success" (click)="salvarCliente()">Salvar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop show" *ngIf="modalCriarAberto"></div>
+
+<div class="modal" *ngIf="modalDetalharAberto" style="display:block;">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5>Detalhes</h5>
+                <button class="btn-close" (click)="fecharDetalhar()"></button>
+            </div>
+
+            <div class="modal-body" *ngIf="clienteSelecionado">
+                <p><strong>Nome:</strong> {{ clienteSelecionado.nome }}</p>
+                <p><strong>CNPJ:</strong> {{ clienteSelecionado.cnpjCliente | mask:'00.000.000/0000-00'}}</p>
+                <p><strong>Contato:</strong> {{ clienteSelecionado.contato | mask: '(00) 00000-0000'}}</p>
+                <p><strong>Data:</strong> {{ clienteSelecionado.dataCadastro | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop show" *ngIf="modalDetalharAberto"></div>
+
+<div class="modal" *ngIf="modalEditarAberto" style="display:block;">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5>Editar Cliente</h5>
+                <button class="btn-close" (click)="fecharEditar()"></button>
+            </div>
+
+            <div class="modal-body" *ngIf="clienteEditando">
+                <label for="clienteNome">Nome</label>
+                <input type="text" class="form-control mb-2" [(ngModel)]="clienteEditando.nome">
+                <label for="clienteNome">CPNJ</label>
+                <input type="text" mask="00.000.000/0000-00" class="form-control mb-2"
+                    [(ngModel)]="clienteEditando.cnpjCliente">
+                <label for="clienteNome">Contato</label>
+                <input type="tel" mask="(00) 00000-0000" class="form-control" [(ngModel)]="clienteEditando.contato">
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" (click)="fecharEditar()">Cancelar</button>
+                <button class="btn btn-primary" (click)="salvarEdicao()">Salvar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop show" *ngIf="modalEditarAberto"></div>
+
+<div class="modal" *ngIf="modalExcluirAberto" style="display:block;">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="text-danger">Excluir</h5>
+                <button class="btn-close" (click)="fecharExcluir()"></button>
+            </div>
+
+            <div class="modal-body" *ngIf="clienteParaExcluir">
+                Deseja excluir <strong>{{ clienteParaExcluir.nome }}</strong>?
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" (click)="fecharExcluir()">Cancelar</button>
+                <button class="btn btn-danger" (click)="confirmarExclusao()">Excluir</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop show" *ngIf="modalExcluirAberto"></div>

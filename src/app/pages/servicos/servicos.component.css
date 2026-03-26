@@ -1,14 +1,40 @@
 .title {
     color: var(--terciary-color);
     font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-.title {
-    color: var(--terciary-color);
-    font-size: 1.5rem;
-}
-
-.btn, .btn:hover {
+.btn,
+.btn:hover {
     color: var(--primary-color);
     margin: 2px;
+}
+
+.filtro {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group-text {
+    width: 30em;
+    text-align: left;
+    outline: none;
+}
+
+.form-select,
+.form-select:focus {
+    width: 150px;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-close {
+    box-shadow: none;
+}
+
+.service-line {
+    border-top: 2px solid #dee2e6;
+    padding-top: 20px;
+    margin-top: 30px;
 }

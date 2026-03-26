@@ -5,6 +5,7 @@
     --secondary-color: #6B7280;
     --terciary-color: #005B96;
     --background-color: #D9D9D9;
+    --header-color: #f8f8f8;
 
     .fc-button,
     .fc-button:focus,
@@ -92,3 +93,22 @@ body {
     flex-direction: column;
     position: relative;
 }
+
+.modal-content {
+    border-radius: 2px;
+    border: none;
+    background-color: var(--primary-color);
+}
+
+.modal-header {
+    background-color: var(--header-color);
+}
+
+.modal-title {
+    color: var(--terciary-color)
+}
+
+.form-control, .form-control:focus{
+    box-shadow: none;
+}
+

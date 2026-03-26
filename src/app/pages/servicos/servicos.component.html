@@ -5,13 +5,121 @@
                 <div class="card-header card-heading-theme">
                     <h2 class="title">
                         Serviços
+                        <button class="btn btn-md btn-success" (click)="abrirModal()">Criar novo serviço</button>
                     </h2>
+                    <div class="modal" tabindex="-1" *ngIf="modalAberto" style="display: block;">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Criar Serviços</h5>
+                                    <button type="button" class="btn-close" (click)="fecharModal()"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <h5><strong>Dados da empresa</strong></h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Empresa</label>
+                                        <input type="text" class="form-control" placeholder="Digite o nome da empresa"
+                                            [value]="nomeEmpresa" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">CNPJ</label>
+                                        <input type="text" class="form-control" placeholder="Digite o CNPJ da empresa"
+                                            mask="00.000.000/0000-00" [(ngModel)]="servico.empresaCnpj" name="empresaCnpj" required
+                                            (blur)="buscarEmpresa()">
+                                    </div>
+
+                                    <h5 class="service-line"><strong>Dados do serviço</strong></h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nome</label>
+                                        <input type="text" class="form-control" placeholder="Digite o nome do cliente"
+                                            [(ngModel)]="servico.nomeSolicitante" name="nomeSolicitante" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Tipo de serviço</label>
+                                        <select class="form-select form-select-md w-100"
+                                            [(ngModel)]="servico.tiposServicos" name="tiposServicos" required>
+                                            <option value="" disabled selected>Selecione o tipo de serviço</option>
+                                            <option value="InstalacaoSimples">Instalação simples</option>
+                                            <option value="InstalacaoComBloqueio">Instalação com bloqueio</option>
+                                            <option value="Manutencao">Manutenção</option>
+                                            <option value="Retirada">Retirada</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Veículo</label>
+                                        <input type="text" class="form-control" placeholder="Digite o modelo do veículo"
+                                            [(ngModel)]="servico.veiculo" name="veiculo" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Placa do veículo</label>
+                                        <input type="text" class="form-control" placeholder="Digite a placa do veículo"
+                                            [(ngModel)]="servico.placa" name="placa" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Kilometragem</label>
+                                        <input type="number" class="form-control"
+                                            placeholder="Digite a kilometragem rodada"
+                                            [(ngModel)]="servico.kilometragem" name="kilometragem" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Valor</label>
+                                        <input type="number" class="form-control"
+                                            placeholder="Digite o valor do serviço" [(ngModel)]="servico.valor" name="valor" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Data do serviço</label>
+                                        <input type="datetime-local" class="form-control"
+                                            [(ngModel)]="servico.dataServico" name="dataServico" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Status</label>
+                                        <select class="form-select" [(ngModel)]="servico.statusServico" name="statusServico" required>
+                                            <option value="" disabled selected>Selecione</option>
+                                            <option value="Pendente">Pendente</option>
+                                            <option value="Concluido">Concluído</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" (click)="fecharModal()">Cancelar</button>
+                                    <button class="btn btn-success" (click)="salvarServico()">Salvar</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-backdrop show" *ngIf="modalAberto"></div>
+                    <div class="filtro">
+                        <input class="input-group-text" type="text" placeholder="Digite aqui o filtro">
+                        <select class="form-select form-select-sm" name="filtro" id="" placeholder="Filtrar por">
+                            <option value="" disabled selected>Filtrar por...</option>
+                            <option value="opcao1">Cliente</option>
+                            <option value="opcao1">Instalação simples</option>
+                            <option value="opcao1">Instalação com bloqueio</option>
+                            <option value="opcao1">Manutenção</option>
+                            <option value="opcao1">Retirada</option>
+                            <option value="opcao1">Veículo</option>
+                            <option value="opcao1">Placa</option>
+                            <option value="opcao1">Kilometragem</option>
+                            <option value="opcao1">Valor</option>
+                            <option value="opcao1">Concluído</option>
+                            <option value="opcao1">Pendente</option>
+                        </select>
+                        <button class="btn btn-sm btn-primary">Pesquisar</button>
+                        <button class="btn btn-sm btn-danger">Limpar filtro</button>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-inverse table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Id</th>
+                                <th>Empresa</th>
+                                <th>CNPJ</th>
                                 <th>Cliente</th>
                                 <th>Tipo de serviço</th>
                                 <th>Veículo</th>
@@ -25,19 +133,23 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let servico of servicos">
-                                <td>#{{ servico.id }}</td>
-                                <td>{{ servico.cliente }}</td>
-                                <td>{{ servico.tipoServico }}</td>
+                                <td>{{ servico.id }}</td>
+                                <td>{{ servico.cliente?.nomeEmpresa }}</td>
+                                <td>{{ servico.cliente?.cnpj }}</td>
+                                <td>{{ servico.nomeSolicitante }}</td>
+                                <td>{{ servico.tiposServicos }}</td>
                                 <td>{{ servico.veiculo }}</td>
                                 <td>{{ servico.placa }}</td>
                                 <td>{{ servico.kilometragem }}</td>
                                 <td>{{ servico.valor | currency:'BRL' }}</td>
-                                <td>{{ servico.dataServico | date:'dd/MM/yyyy' }}</td>
-                                <td>{{ servico.status}}</td>
+                                <td>{{ servico.dataServico | date:'dd/MM/yyyy HH:mm' }}</td>
+                                <td>{{ servico.statusServico }}</td>
                                 <td class="actions-buttons">
-                                    <button class="btn btn-sm btn-primary">Detalhar</button>
-                                    <button class="btn btn-sm btn-info">Editar</button>
-                                    <button class="btn btn-sm btn-danger">Excluir</button>
+                                    <button class="btn btn-sm btn-primary"
+                                        (click)="detalharServico(servico)">Detalhar</button>
+                                    <button class="btn btn-sm btn-info" (click)="editarServico(servico)">Editar</button>
+                                    <button class="btn btn-sm btn-danger"
+                                        (click)="excluirServico(servico.id)">Excluir</button>
                                 </td>
                             </tr>
                         </tbody>
